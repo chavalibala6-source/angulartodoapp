@@ -1,0 +1,250 @@
+
+/* ========== CONTAINER ========== */
+.todo-container {
+  max-width: calc(100% - 100px); /* 100% minus left + right padding */
+  margin: 40px auto;
+  padding: 30px 35px;
+  border: 1px solid #e0d6c8;
+  border-radius: 16px;
+  background: linear-gradient(to bottom right, #f5e8dd, #f0dfc9); /* subtle gradient for depth */
+  font-family: 'Segoe Script', 'Comic Sans MS', cursive, sans-serif;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+}
+
+/* ========== INPUTS & BUTTONS ========== */
+input,
+textarea {
+  width: 65%;
+  padding: 12px 14px;
+  border: 1px solid #d1bfa7;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  background: #fffaf3;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+input {
+  margin-right: 14px;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #cfa373;
+  box-shadow: 0 0 10px rgba(207, 163, 115, 0.4);
+}
+
+/* Textarea for notes */
+li textarea {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 14px 16px;
+  font-size: 0.95rem;
+  resize: vertical;
+  min-height: 70px;
+  border: 1px solid #cfa373;
+  border-radius: 10px;
+  background: linear-gradient(#fffaf5, #fff3e6);
+  font-family: 'Courier New', monospace;
+  color: #4b3b2a;
+  line-height: 1.5;
+  box-shadow: inset 0 3px 6px rgba(0,0,0,0.05);
+  transition: all 0.25s ease;
+}
+
+/* Notes label above textarea */
+.task-notes label {
+  display: block;
+  font-family: 'Segoe Script', cursive;
+  color: #8a6b44;
+  font-weight: bold;
+  margin-bottom: 6px;
+  font-size: 1.1rem;
+}
+
+/* Buttons */
+button {
+  padding: 10px 18px;
+  background-color: #cfa373;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: bold;
+  font-family: inherit;
+  transition: all 0.25s ease;
+}
+
+button:hover {
+  background-color: #b88c5a;
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* ========== TASK LIST ========== */
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 18px;
+  border-bottom: 1px solid #e0d6c8;
+  background: #fff7f2;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  transition: all 0.2s ease;
+}
+
+li:hover {
+  background: #fff3e6;
+  transform: translateY(-2px);
+}
+
+li.completed strong {
+  text-decoration: line-through;
+  color: #9b8f85;
+}
+
+/* Remove button inside list */
+li button {
+  align-self: flex-end;
+  background-color: #e57373;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+li button:hover {
+  background-color: #d04f4f;
+  transform: translateY(-1px);
+}
+
+li button:active {
+  transform: scale(0.95);
+}
+
+/* ========== IMAGE STYLING ========== */
+.task-image {
+  display: block;
+  max-width: 40%; /* 100% minus left + right padding */
+  height: auto;
+  margin-top: 14px;
+  border-radius: 12px;
+  border: 1px solid #d1bfa7;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.25s ease;
+}
+
+.task-image:hover {
+  transform: scale(1);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  max-width: calc(100% - 200px); /* 100% minus left + right padding */
+
+}
+
+.task-image:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* ========== CODE BLOCK / PREVIEW ========== */
+pre {
+  font-size: 18px;
+  line-height: 1.6;
+  font-family: 'Arial', sans-serif;
+  /*background: linear-gradient(145deg, #eef0f2, #f4f7f9);*/
+  background: #fff;
+  color: #1e1ea9;
+  padding: 18px;
+  border-radius: 14px;
+  /*box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);*/
+  border-left: 4px solid #4a90e2;
+  transition: all 0.2s ease;
+  white-space: pre-wrap !important;
+  word-break: break-all !important;
+  overflow-wrap: anywhere !important;
+  overflow-x: hidden !important;
+  max-width: 100%;
+}
+
+pre:hover {
+  transform: translateY(-2px);
+  /*box-shadow: 0 10px 24px rgba(0,0,0,0.15);*/
+  background: #fff;
+}
+
+pre code {
+  display: block;
+  white-space: inherit;
+}
+
+/* ========== TOOLBAR ========== */
+.toolbar {
+  margin-bottom: 10px;
+}
+
+.toolbar button {
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #cfa373;
+  background-color: #fff6f0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.toolbar button:hover {
+  background-color: #f0e3d5;
+  transform: translateY(-1px);
+}
+
+/* ========== RESPONSIVE ADJUSTMENTS ========== */
+@media (max-width: 700px) {
+  .todo-container {
+    padding: 25px 20px;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  li {
+    padding: 14px;
+  }
+
+  .task-image {
+  max-width: calc(100% - 5000px); /* 100% minus left + right padding */
+  }
+}
+
+
+
+
+.toolbar[_ngcontent-ng-c4116603650] button[_ngcontent-ng-c4116603650]{
+  background-color: #4a90e2;
+  margin: 5px;
+}
+body {
+  background: #783939;
+}
