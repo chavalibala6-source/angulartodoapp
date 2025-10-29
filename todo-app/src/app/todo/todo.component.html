@@ -1,36 +1,44 @@
-
 <div class="todo-container">
   <h2>My To-Do List</h2>
 
   <!-- Input fields -->
   <input type="text" [(ngModel)]="task" placeholder="Enter a task" />
   <div class="toolbar">
-  <button type="button" (click)="makeBold()">B</button>
-</div>
+    <button type="button" (click)="makeBold()">B</button>
+  </div>
   <textarea [(ngModel)]="taskContent" placeholder="Enter preformatted or code content"></textarea>
   <input id="imageInput" type="file" (change)="onImageSelected($event)" accept="image/*" />
 
   <button (click)="addTask()">Add</button>
 
+  <!-- 🟢 Notes Index -->
+  <div class="notes-index" *ngIf="tasks.length > 0">
+    <h3>📚 Notes Index</h3>
+    <ul>
+      <li *ngFor="let t of tasks">
+        <a href="#{{ t._id }}">{{ t.name }}</a>
+      </li>
+    </ul>
+  </div>
+
   <!-- Task list -->
   <ul>
     <li
-     *ngFor="let t of tasks; let i = index"
-    [class.completed]="t.completed"
-    (click)="toggleTaskComplete(t)"
-  >
+      *ngFor="let t of tasks; let i = index"
+      [attr.id]="t._id"
+      [class.completed]="t.completed"
+      (click)="toggleTaskComplete(t)"
+    >
       <div class="task-content">
         <strong>{{ t.name }}</strong>
+        <pre class="line-numbers code-section">
+          <code class="language-python" [innerHTML]="t.content"></code>
+        </pre>
 
-        <!-- Preformatted block -->
-<pre class="line-numbers code-section"><code class="language-python" [innerHTML]="t.content"></code></pre>
-
-        <!-- Image preview -->
         <img *ngIf="t.image" [src]="t.image" alt="Task Image" class="task-image" />
       </div>
-      
+
       <button (click)="removeTask(i); $event.stopPropagation()">Remove</button>
     </li>
   </ul>
-  
 </div>

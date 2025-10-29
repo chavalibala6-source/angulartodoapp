@@ -74,6 +74,13 @@ export class TodoComponent implements OnInit, AfterViewChecked {
     }
   }
 
+  extractLinks(text: string): string[] {
+  if (!text) return [];
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  const matches = text.match(urlRegex);
+  return matches ? matches : [];
+}
+
   makeBold() {
     const textarea = document.querySelector('textarea') as HTMLTextAreaElement;
     if (!textarea) return;
