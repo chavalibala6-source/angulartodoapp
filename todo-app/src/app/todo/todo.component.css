@@ -4,9 +4,9 @@
   /*max-width: calc(100% - 100px); /* 100% minus left + right padding */
   margin: 40px auto;
   padding: 30px 35px;
-  border: 1px solid #e0d6c8;
+  /*border: 1px solid #e0d6c8;*/
   border-radius: 16px;
-  background: linear-gradient(to bottom right, #f5e8dd, #f0dfc9); /* subtle gradient for depth */
+  background: linear-gradient(to bottom right, #fff, #f8f8f8); /* subtle gradient for depth */
   font-family: 'Segoe Script', 'Comic Sans MS', cursive, sans-serif;
   transition: all 0.3s ease;
 }
@@ -20,9 +20,10 @@ textarea {
   border-radius: 8px;
   font-family: inherit;
   font-size: 1rem;
-  background: #fffaf3;
+  background: #fff;
   transition: all 0.3s ease;
   box-sizing: border-box;
+  align-items: center;
 }
 
 input {
@@ -100,7 +101,7 @@ li {
   align-items: flex-start;
   padding: 16px 18px;
   border-bottom: 1px solid #e0d6c8;
-  background: #fff7f2;
+  background: #fff;
   margin-bottom: 12px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.06);
@@ -108,7 +109,7 @@ li {
 }
 
 li:hover {
-  background: #fff3e6;
+  background: #f8f8f8;
   transform: translateY(-2px);
 }
 
@@ -189,6 +190,7 @@ pre:hover {
 pre code {
   display: block;
   white-space: inherit;
+
 }
 
 /* ========== TOOLBAR ========== */

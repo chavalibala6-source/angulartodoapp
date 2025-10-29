@@ -12,7 +12,7 @@ export interface Task {
 
 @Injectable({ providedIn: 'root' })
 export class TaskService {
-  private apiUrl = 'http://192.168.1.12:3000/api/tasks';
+private apiUrl = `http://${window.location.hostname}:3000/api/tasks`;
 
   constructor(private http: HttpClient) {}
 

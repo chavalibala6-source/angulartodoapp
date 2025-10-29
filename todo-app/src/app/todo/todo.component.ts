@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TaskService, Task } from './task.service';
+import { SafeHtmlPipe } from './safe-html.pipe';  // ✅ fixed import path
 
-// 🟢 Prism global declaration
 declare var Prism: any;
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, SafeHtmlPipe], // ✅ added here
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.css']
 })
@@ -19,8 +19,6 @@ export class TodoComponent implements OnInit, AfterViewChecked {
   taskContent = '';
   selectedImage: string | ArrayBuffer | null = null;
   tasks: Task[] = [];
-  
-  // 🟢 To prevent multiple redundant highlight calls
   private highlighted = false;
 
   constructor(private taskService: TaskService) {}
@@ -33,7 +31,7 @@ export class TodoComponent implements OnInit, AfterViewChecked {
     this.taskService.getTasks().subscribe({
       next: (data) => {
         this.tasks = data;
-        this.highlighted = false; // 🟢 Reset highlight trigger
+        this.highlighted = false;
       },
       error: (err) => console.error('Failed to load tasks:', err)
     });
@@ -44,14 +42,11 @@ export class TodoComponent implements OnInit, AfterViewChecked {
       const newTask: Task = {
         name: this.task.trim(),
         completed: false,
-        // 🟢 Escape HTML to avoid broken tags
-        content: this.escapeHTML(this.taskContent.trim() || ''),
+        content: this.taskContent.trim() || '', // ✅ no escaping
         image: this.selectedImage ? String(this.selectedImage) : ''
       };
 
       this.taskService.addTask(newTask).subscribe(() => this.loadTasks());
-
-      // Reset fields
       this.task = '';
       this.taskContent = '';
       this.selectedImage = null;
@@ -94,16 +89,6 @@ export class TodoComponent implements OnInit, AfterViewChecked {
     textarea.focus();
   }
 
-  // 🟢 Simple escape to prevent HTML injection
-  escapeHTML(text: string): string {
-    return text.replace(/[&<>]/g, (char) => ({
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;'
-    }[char] || char));
-  }
-
-  // 🟢 Highlight code after Angular updates DOM
   ngAfterViewChecked() {
     if (typeof Prism !== 'undefined' && !this.highlighted) {
       Prism.highlightAll();

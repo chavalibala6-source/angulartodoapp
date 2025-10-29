@@ -4,8 +4,8 @@ import time
 import os
 
 # ---- Paths to your projects ----
-FRONTEND_DIR = "/Users/bala/todo-app"
-BACKEND_DIR = "/Users/bala/todo-backend"
+FRONTEND_DIR = "/Users/bala/angulartodoapp/todo-app"
+BACKEND_DIR = "/Users/bala/angulartodoapp/todo-backend"
 
 # ---- Commands to run ----
 FRONTEND_CMD = ["ng", "serve", "--host", "0.0.0.0"]
